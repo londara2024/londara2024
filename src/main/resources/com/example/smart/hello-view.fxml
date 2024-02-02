@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1170.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smart.SmartController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <top>
+            <AnchorPane prefHeight="46.0" prefWidth="1211.0" styleClass="header-bar" stylesheets="@css/main.css" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane layoutX="303.0" layoutY="2.0" prefHeight="46.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <left>
+                        <AnchorPane prefHeight="46.0" prefWidth="239.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="11.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/company1.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="63.0" layoutY="9.0" text="SMART TEAM" textFill="#fff7f7">
+                                 <font>
+                                    <Font name="Courier New Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </left>
+                     <center>
+                        <AnchorPane prefHeight="46.0" prefWidth="844.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <TextField fx:id="search_module" layoutX="32.0" layoutY="11.0" prefHeight="25.0" prefWidth="222.0" promptText="Module Name ...." AnchorPane.rightAnchor="581.0" />
+                              <TextField fx:id="search_class" layoutX="268.0" layoutY="11.0" prefHeight="25.0" prefWidth="208.0" promptText="Class Name ..." AnchorPane.rightAnchor="359.0" />
+                              <TextField fx:id="search_job" layoutX="487.0" layoutY="11.0" prefHeight="25.0" prefWidth="237.0" promptText="Job Name ..." AnchorPane.rightAnchor="111.0" />
+                              <Button fx:id="btn_search" layoutX="701.0" layoutY="11.0" minHeight="20.0" mnemonicParsing="false" onMouseClicked="#searchDataInTableBtnSearch" prefHeight="25.0" prefWidth="100.0" text="Search" AnchorPane.rightAnchor="3.0">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                     <right>
+                        <AnchorPane prefHeight="46.0" prefWidth="126.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <ImageView fitHeight="26.0" fitWidth="35.0" layoutX="79.0" layoutY="10.0" onMouseClicked="#showFromDBConnect" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/db.png" />
+                                 </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </ImageView>
+                              <ImageView fx:id="main_db_status" fitHeight="18.0" fitWidth="13.0" layoutX="76.0" layoutY="24.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/circle.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </right>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="740.0" prefWidth="1199.0" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="467.0" prefWidth="1180.0" stylesheets="@css/main.css" AnchorPane.bottomAnchor="277.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="radius" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <children>
+                        <TableView fx:id="main_tableView" layoutX="14.0" layoutY="14.0" onMouseClicked="#selectedItemInTable" prefHeight="417.0" prefWidth="1160.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                          <columns>
+                            <TableColumn fx:id="main_col_id" prefWidth="75.0" style="-fx-alignment: center;" text="ID" />
+                            <TableColumn fx:id="main_col_module_name" prefWidth="75.0" style="-fx-alignment: center;" text="Module Name" />
+                              <TableColumn fx:id="main_col_class_name" prefWidth="75.0" style="-fx-alignment: center;" text="Class Name" />
+                              <TableColumn fx:id="main_col_job_name" prefWidth="75.0" style="-fx-alignment: center;" text="Job Name" />
+                              <TableColumn fx:id="main_col_input_string" prefWidth="75.0" style="-fx-alignment: center;" text="Input String" />
+                              <TableColumn fx:id="main_col_aip_document" prefWidth="75.0" style="-fx-alignment: center;" text="Api Docement" />
+                              <TableColumn fx:id="main_col_local_name" prefWidth="75.0" style="-fx-alignment: center;" text="Local Module Name" />
+                              <TableColumn fx:id="main_col_date" prefWidth="75.0" style="-fx-alignment: center;" text="Date" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                        <Button fx:id="btn_refresh" layoutX="1028.0" layoutY="433.0" mnemonicParsing="false" onMouseClicked="#refreshTable" prefHeight="31.0" prefWidth="140.0" styleClass="btn" stylesheets="@css/main.css" text="Refresh Table" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="12.0" />
+                     </children>
+                  </AnchorPane>
+                  <Separator layoutX="17.0" layoutY="487.0" prefHeight="0.0" prefWidth="1149.0" AnchorPane.bottomAnchor="264.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" />
+                  <AnchorPane layoutX="14.0" layoutY="500.0" prefHeight="240.0" prefWidth="1174.0" stylesheets="@css/main.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <styleClass>
+                        <String fx:value="white-bg" />
+                        <String fx:value="shadow" />
+                        <String fx:value="radius" />
+                     </styleClass>
+                     <children>
+                        <Label layoutX="21.0" layoutY="17.0" prefHeight="17.0" prefWidth="105.0" text="Module Name :" AnchorPane.leftAnchor="21.0">
+                           <font>
+                              <Font name="Courier New" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="main_moduleName" editable="false" layoutX="136.0" layoutY="13.0" prefHeight="25.0" prefWidth="238.0" AnchorPane.leftAnchor="136.0" />
+                        <Label layoutX="29.0" layoutY="50.0" prefHeight="17.0" prefWidth="96.0" text="Class Name :" AnchorPane.leftAnchor="29.0">
+                           <font>
+                              <Font name="Courier New" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="main_className" editable="false" layoutX="135.0" layoutY="45.0" prefHeight="25.0" prefWidth="238.0" AnchorPane.leftAnchor="136.0" />
+                        <Label layoutX="44.0" layoutY="81.0" prefHeight="17.0" prefWidth="82.0" text="Job Name :" AnchorPane.leftAnchor="44.0">
+                           <font>
+                              <Font name="Courier New" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="main_jobName" editable="false" layoutX="135.0" layoutY="77.0" prefHeight="25.0" prefWidth="238.0" AnchorPane.leftAnchor="135.0" />
+                        <Label layoutX="13.0" layoutY="112.0" prefHeight="17.0" prefWidth="115.0" text="Api Document :" AnchorPane.leftAnchor="13.0">
+                           <font>
+                              <Font name="Courier New" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="main_api" editable="false" layoutX="135.0" layoutY="108.0" prefHeight="25.0" prefWidth="238.0" AnchorPane.leftAnchor="135.0" />
+                        <Label layoutX="13.0" layoutY="143.0" prefHeight="17.0" prefWidth="115.0" text="Local Module :" AnchorPane.leftAnchor="13.0">
+                           <font>
+                              <Font name="Courier New" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="main_local_name" editable="false" layoutX="135.0" layoutY="139.0" prefHeight="25.0" prefWidth="238.0" AnchorPane.leftAnchor="135.0" />
+                        <Separator layoutX="404.0" layoutY="9.0" orientation="VERTICAL" prefHeight="217.0" prefWidth="10.0" AnchorPane.leftAnchor="404.0" />
+                        <Label layoutX="429.0" layoutY="19.0" prefHeight="17.0" prefWidth="126.0" text="Input String :" AnchorPane.leftAnchor="429.0">
+                           <font>
+                              <Font name="Courier New" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="main_inputString" editable="false" layoutX="564.0" layoutY="18.0" prefHeight="161.0" prefWidth="605.0" AnchorPane.leftAnchor="564.0" AnchorPane.rightAnchor="11.0" />
+                        <Button fx:id="btn_delete" layoutX="1066.0" layoutY="189.0" mnemonicParsing="false" onAction="#deleteDataBtnDeleted" prefHeight="36.0" prefWidth="112.0" styleClass="btn" stylesheets="@css/main.css" text="Delete" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="13.0" />
+                        <Button fx:id="btn_update" layoutX="903.0" layoutY="189.0" mnemonicParsing="false" onAction="#updateDatabaseBtnUpdate" prefHeight="36.0" prefWidth="135.0" styleClass="btn" stylesheets="@css/main.css" text="Update" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="142.0" />
+                        <Button fx:id="btn_add" layoutX="753.0" layoutY="189.0" mnemonicParsing="false" onAction="#insertToDatabaseBtnAdd" prefHeight="35.0" prefWidth="134.0" styleClass="btn" stylesheets="@css/main.css" text="Add" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="293.0" />
+                        <Button fx:id="btn_clear" layoutX="612.0" layoutY="189.0" mnemonicParsing="false" onAction="#clearTextFiled" prefHeight="35.0" prefWidth="119.0" stylesheets="@css/main.css" text="Clear" AnchorPane.bottomAnchor="16.0" AnchorPane.rightAnchor="449.0">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn" />
+                           </styleClass></Button>
+                        <Button fx:id="btn_View" layoutX="234.0" layoutY="176.0" mnemonicParsing="false" onAction="#EditeTextFiled" prefHeight="35.0" prefWidth="137.0" styleClass="btn" stylesheets="@css/main.css" text="Unable Edite" AnchorPane.leftAnchor="234.0" />
+                        <AnchorPane fx:id="main_form_db_connect" layoutX="6.0" layoutY="5.0" prefHeight="227.0" prefWidth="527.0" stylesheets="@css/main.css">
+                           <styleClass>
+                              <String fx:value="white-bg" />
+                              <String fx:value="radius" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <children>
+                              <Label layoutX="183.0" layoutY="6.0" text="DATABASE CONNECTION" AnchorPane.leftAnchor="183.0">
+                                 <font>
+                                    <Font name="Courier New Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="main_db_host" layoutX="156.0" layoutY="39.0" prefHeight="25.0" prefWidth="229.0" />
+                              <Label layoutX="35.0" layoutY="43.0" text="Host Address :">
+                                 <font>
+                                    <Font name="Courier New" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="main_db_name" layoutX="156.0" layoutY="70.0" prefHeight="25.0" prefWidth="229.0" />
+                              <Label layoutX="28.0" layoutY="74.0" text="Database Name :">
+                                 <font>
+                                    <Font name="Courier New" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="main_db_username" layoutX="156.0" layoutY="106.0" prefHeight="25.0" prefWidth="229.0" />
+                              <Label layoutX="66.0" layoutY="111.0" text="Username :">
+                                 <font>
+                                    <Font name="Courier New" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="main_db_password" layoutX="156.0" layoutY="142.0" prefHeight="25.0" prefWidth="229.0" />
+                              <Label layoutX="66.0" layoutY="147.0" text="Password :">
+                                 <font>
+                                    <Font name="Courier New" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btn_db_clear_text" layoutX="391.0" layoutY="174.0" mnemonicParsing="false" onAction="#clearDBTextFiled" prefHeight="35.0" prefWidth="120.0" styleClass="btn" stylesheets="@css/main.css" text="Clear" AnchorPane.rightAnchor="16.0" />
+                              <Button fx:id="btn_db_connect" layoutX="391.0" layoutY="126.0" mnemonicParsing="false" onAction="#connectionDB" prefHeight="35.0" prefWidth="119.0" styleClass="btn" stylesheets="@css/main.css" text="Connect" AnchorPane.rightAnchor="17.0" />
+                              <Label fx:id="main_db_close" layoutX="499.0" layoutY="3.0" onMouseClicked="#closeFormDBConnection" text="X" textFill="#eb0707">
+                                 <font>
+                                    <Font name="Courier New Bold" size="18.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Label>
+                              <TextField fx:id="main_db_post" layoutX="157.0" layoutY="178.0" prefHeight="25.0" prefWidth="145.0" />
+                              <Label layoutX="98.0" layoutY="182.0" text="Post :">
+                                 <font>
+                                    <Font name="Courier New" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

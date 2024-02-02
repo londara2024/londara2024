@@ -1,0 +1,2 @@
+autoCreateTable  : [  Table 'smart_input' already create. ]
+autoCreateTable  : [  Table 'smart_input' already create. ]
